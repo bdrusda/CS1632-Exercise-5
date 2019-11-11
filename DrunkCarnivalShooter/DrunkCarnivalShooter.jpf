@@ -1,0 +1,19 @@
+target = DrunkCarnivalShooter
+target.args = test
+
+# Enumerate all possible values returned by Random.nextInt
+cg.enumerate_random = true
+
+# If you want to a trace of program statements leading up to the error, enable the below instead.
+# report.console.property_violation=error,trace
+report.console.property_violation=error
+
+# Print program output as JPF traverses all possible paths
+vm.tree_output = true
+
+# Do a BFS (Breadth First Search) of the state space.  Typically can find bugs faster than a DFS (Depth First Search) that can lead you down a rabbit hole.
+search.class = .search.heuristic.BFSHeuristic
+
+# Generate the state space graph file in jpf-state-space.dot and also the trace file in DrunkCarnivalShooter.trace
+listener=.listener.StateSpaceDot,.listener.ChoiceTracker
+choice.trace = DrunkCarnivalShooter.trace
